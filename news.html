@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+<title>Vijay Rasigan</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css?v1" type="text/css" rel="stylesheet" media="screen,projection"/>
+<style></style>
+</head>
+<body>
+<div class="fullpage">
+  <div class="loader"></div>
+</div>
+<div id="header"></div>
+<div class="container" style="margin-top: 65px; margin-bottom: 65px;">
+		<div class="row">
+    <div class="col12 s12 m12 l12"> 
+       <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal Test</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col12 s12 m12 l12" id="news"> 
+      
+      
+    </div>
+  </div> 
+
+  <!--  <div class="row" id="AllMovies"></div>--> 
+</div>
+<div id="footer"></div>
+<!--  Scripts--> 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+<script src="js/materialize.js"></script> 
+<script src="js/init.js"></script> 
+<script>
+	  $(document).ready(function(){
+		  $("#header").load("header.html?v10");
+	$("#footer").load("footer.html?10");
+    $('select').formSelect();
+		  
+
+//		  $('.carousel').carousel();
+//		    $('.carousel.carousel-slider').carousel({
+//    fullWidth: true,
+//    indicators: true
+//  });
+//		  $.get("data.json", function(data, status){
+			  
+		  $.get("https://script.google.com/macros/s/AKfycby6M9YxNEPGeFENwAxfWfpI8pHtYlaawwD70npvO9xmb95slTg/exec", function(data, status){
+    var datas=data;
+			     
+//document.write("Sorted Employee Names : ");    
+//for (var item in item) {    
+//    document.write("<br>" + item[i].MovieID);    
+//} 
+	$.each(datas, function (index, item) {
+	for (i = 0; i < item.length; i++) {
+     var eachrow = "<div>" + "<a class='waves-effect waves-light btn modal-trigger' href='#vijay" + item[i]["MovieID"] + "'>" + item[i]["MovieName"] + "</a><div id='vijay" + item[i]["MovieID"] + "' class='modal'> <div class='modal-content'><h4>" + item[i]["MovieName"] + "</h4><p>" + item[i]["News_desc"] + "</p></div><div class='modal-footer'> <a href='#!' class='modal-close waves-effect waves-green btn-flat'>Agree</a> </div></div>" + "</div>";
+		
+//     var eachrow = "<div>" + "<a class='waves-effect waves-light btn modal-trigger' href='#modal1'>Modal</a>  <div id='modal1' class='modal'><div class='modal-content'> <h4>Modal Header</h4> <p>A bunch of text</p> </div> <div class='modal-footer'> <a href='#!' class='modal-close waves-effect waves-green btn-flat'>Agree</a></div></div>"+ "</div>";
+		
+//		var bigslider = "<li> <img src='https://mrlsiva.s3.ap-south-1.amazonaws.com/Vijay/big/" + item[i]["MovieID"] + ".jpg'> <div class='caption center-align'><h3>This is our big Tagline!</h3><h5 class='light grey-text text-lighten-3'>our small slogan.</h5> </div> </li>";
+     $('#news').append(eachrow); 
+//     $('#bigslider').append(bigslider); 
+	$(".fullpage").css("display", "none");
+	}
+		
+		
+		
+	});
+  });
+
+
+
+  });
+	
+		    $(document).ready(function(){
+				$('.modal').modal();
+    $('.slider').slider();
+  });
+	</script>
+</body>
+</html>
